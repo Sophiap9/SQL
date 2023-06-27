@@ -1,0 +1,29 @@
+--Create a pet store database
+
+CREATE TABLE The_Cats_Bag (id INTEGER PRIMARY KEY, product_name TEXT, price INTEGER, typeproduct TEXT, quantity INTEGER, reccomended_age TEXT);
+
+INSERT INTO The_Cats_Bag VALUES (1, "Window_Perch", 29.99, "Leisure", 10, "All");
+INSERT INTO The_Cats_Bag VALUES (2, "Cat_Tree", 80.00, "Activity", 4, "All");
+INSERT INTO The_Cats_Bag VALUES (3, "Hanging_Cushion", 50.00, "Leisure", 6, "All");
+INSERT INTO The_Cats_Bag VALUES (4, "Automatic_Feeder", 14.99, "Food/Drink", 30, "All");
+INSERT INTO The_Cats_Bag VALUES (5, "Water_Fountain", 15.99, "Food/Drink", 30, "All");
+INSERT INTO The_Cats_Bag VALUES (6, "Cat_Chow LRG", 40.00, "Food/Drink", 40, "adult");
+INSERT INTO The_Cats_Bag VALUES (7, "Kitten_Chow LRG", 44.00, "Food/Drink", 50, "kitten");
+INSERT INTO The_Cats_Bag VALUES (8, "Cat_Noms", 9.00, "Food/Drink", 20, "All");
+INSERT INTO The_Cats_Bag VALUES (9, "Litter_Pellets", 19.99, "Cleaning", 18, "All");
+INSERT INTO The_Cats_Bag VALUES (10, "Litter_Scooper", 2.00, "Cleaning", 18, "All");
+INSERT INTO The_Cats_Bag VALUES (11, "Kitten_Milk", 11.99, "Food/Drink", 9, "kitten");
+INSERT INTO The_Cats_Bag VALUES (12, "Catnip", 3.00, "Food/Drink", 30, "All");
+INSERT INTO The_Cats_Bag VALUES (13, "Cat_Leash", 10.99, "Activity", 10, "Adult");
+INSERT INTO The_Cats_Bag VALUES (14, "Rat_Toy", 0.99, "Activity", 500, "All");
+INSERT INTO The_Cats_Bag VALUES (15, "Cat_Bed", 30.00, "Leisure", 5, "All");
+
+--display the database ordered by price
+SELECT * FROM The_Cats_Bag ORDER BY price desc;
+--how many total products is in the store?
+SELECT SUM (quantity) FROM The_Cats_Bag;
+--which products are only for kittens?
+SELECT product_name, quantity FROM The_Cats_Bag WHERE reccomended_age = "kitten";
+
+
+
