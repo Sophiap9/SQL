@@ -24,6 +24,8 @@ SELECT * FROM The_Cats_Bag ORDER BY price desc;
 SELECT SUM (quantity) FROM The_Cats_Bag;
 --which products are only for kittens?
 SELECT product_name, quantity FROM The_Cats_Bag WHERE reccomended_age = "kitten";
+--what are the names and prices of the products that both kittens and cats can use?
+SELECT product_name, price FROM The_Cats_Bag WHERE reccomended_age = "All";
 
 
 
