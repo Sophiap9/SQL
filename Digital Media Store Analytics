@@ -1,0 +1,44 @@
+#In this SQL, I'm utilizing a dataset called Chinook, which represents a digital media store contaning tables for artists, albums, media tracks, invoices, employees, and customers.
+
+/*Show customers (their full names, customer ID, and country) who are not in the US*/
+SELECT CustomerId, FirstName, LastName, Country 
+FROM chinook.customers
+WHERE Country <> 'USA';
+
+/*Find the invoices of customers who are from Brazil*/
+SELECT i.InvoiceId, i.InvoiceDate, i.BillingCountry, c.FirstName, c.LastName
+FROM chinook.invoices i
+LEFT JOIN chinook.customers c
+ON c.CustomerId = i.CustomerId
+WHERE Billingcountry = 'Brazil';
+
+/*Show the employees who are Sales Agents*/
+SELECT FirstName, LastName
+FROM chinook.employees
+WHERE Title LIKE '%Agent%';
+
+/*How many sales were there in 2009?*/
+SELECT COUNT(Total)
+FROM chinook.invoices
+WHERE InvoiceDate LIKE '%2009%';
+
+/*What is the total amount in sales for 2009?*/
+SELECT SUM(Total)
+FROM chinook.invoices
+WHERE InvoiceDate BETWEEn '2009-01-01' AND '20090-12-31';
+
+/*Write a query that includes the purchased track name with each invoice line ID*/
+SELECT T.Name, II.InvoiceLineId
+FROM chinook.tracks T
+JOIN chinook.invoice_items II
+ON T.TrackId = II.TrackId;
+
+/*Provide a query that shows all the tracks, and include the album name, media type, and genre*/
+SELECT T.Name AS 'Track', A.Title AS 'Album', M.Name AS 'Media_Type', G.Name AS 'Genre'
+FROM chinook.tracks T
+JOIN chinook.albums A
+ON T.AlbumId = A.AlbumId
+JOIN chinook.media_types M
+ON M.MediaTypeId = T.MediaTypeId
+JOIN chinook.genres G
+ON G.GenreId = T.GenreId;
