@@ -25,7 +25,7 @@ WHERE InvoiceDate LIKE '%2009%';
 /*What is the total amount in sales for 2009?*/
 SELECT SUM(Total)
 FROM chinook.invoices
-WHERE InvoiceDate BETWEEn '2009-01-01' AND '20090-12-31';
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '20090-12-31';
 
 /*Write a query that includes the purchased track name with each invoice line ID*/
 SELECT T.Name, II.InvoiceLineId
