@@ -1,4 +1,4 @@
---Create a pet store database
+# I have created a table in this project, revealing insights about a Pet Store.
 
 CREATE TABLE The_Cats_Bag (id INTEGER PRIMARY KEY, product_name TEXT, price INTEGER, typeproduct TEXT, quantity INTEGER, reccomended_age TEXT);
 
@@ -18,14 +18,19 @@ INSERT INTO The_Cats_Bag VALUES (13, "Cat_Leash", 10.99, "Activity", 10, "Adult"
 INSERT INTO The_Cats_Bag VALUES (14, "Rat_Toy", 0.99, "Activity", 500, "All");
 INSERT INTO The_Cats_Bag VALUES (15, "Cat_Bed", 30.00, "Leisure", 5, "All");
 
---display the database ordered by price
-SELECT * FROM The_Cats_Bag ORDER BY price desc;
---how many total products is in the store?
+/*Display the database ordered by price*/
+SELECT * FROM The_Cats_Bag ORDER BY price DESC;
+
+/*How many total products is in the store?*/
 SELECT SUM (quantity) FROM The_Cats_Bag;
---which products are only for kittens?
-SELECT product_name, quantity FROM The_Cats_Bag WHERE reccomended_age = "kitten";
---what are the names and prices of the products that both kittens and cats can use?
-SELECT product_name, price FROM The_Cats_Bag WHERE reccomended_age = "All";
+
+/*Which products are only for kittens?*/
+SELECT product_name, quantity FROM The_Cats_Bag 
+WHERE reccomended_age = "kitten";
+
+/*What are the names and prices of the products that both kittens and cats can use?*/
+SELECT product_name, price FROM The_Cats_Bag 
+WHERE reccomended_age = "All";
 
 
 
