@@ -1,4 +1,4 @@
--- Use advanced SELECT queries to discover things about the data set --
+# For this project, I utilized a dataset containing information about a furniture store.
 
 CREATE TABLE sales(
   ID INTEGER  NOT NULL PRIMARY KEY
@@ -117,20 +117,24 @@ INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,co
 INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/14/09 11:19','Chair',1200,'Visa','Jennifer','Jumeira','Dubayy','United Arab Emirates','1/14/09 10:44','1/14/09 21:26',25.2097222,55.2477778);
 INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/13/09 19:39','Chair',1200,'Visa','Jolene','Englewood','CO','United states','1/6/09 22:00','1/14/09 22:02',39.64778,-104.98722);
 
--- What is the average price across all furniture pieces?-- 
+/*What is the average price across all furniture pieces?*/
 SELECT AVG(price) FROM sales;
--- What is the least/most expensive furniture item? --
+
+/*What is the least/most expensive furniture item?*/
 SELECT MIN(price), MAX(price) FROM sales;
--- How many products does each country have?
+
+/*How many products does each country have?*/
 SELECT COUNT(product), country FROM sales
 GROUP BY country
 ORDER BY COUNT(product) ASC;
--- Which countries have more than 5 products?
+
+/*Which countries have more than 5 products?*/
 SELECT COUNT(product), country FROM sales
 GROUP BY country
 HAVING COUNT(product) > 5 
 ORDER BY COUNT(product) ASC;
--- Which products fall within the average price point?
+
+/*Which products fall within the average price point?*/
 SELECT product, price, 
 CASE
 WHEN price > 1740 THEN "above average"
@@ -138,7 +142,13 @@ WHEN price < 1740 THEN "below average"
 END as "price point of product" 
 FROM sales
 GROUP BY product;
--- If a customer who needs a refund has only provided the city they live in and type of payment they use, how can we narrow down the search to find the customer name?
-SELECT name, city, payment_type FROM sales WHERE payment_type = 'Visa' AND city = 'Miami';
---The store had an anniversary sale on January 10th-11th. How many customers purchased during this time?
-SELECT COUNT(name) AS "# of customers during sale" FROM sales WHERE transaction_date LIKE '1/10/09%' OR transaction_date LIKE '1/11/09%';
+
+/*A customer needs a refund and has only provided the city they live in and type of payment used. Write a query to narrow down the list of potential names.*/
+SELECT name, city, payment_type FROM sales 
+WHERE payment_type = 'Visa' 
+AND city = 'Miami';
+
+/*The store had an anniversary sale on January 10th-11th. How many customers purchased during this time?*/
+SELECT COUNT(name) AS "# of customers during sale" FROM sales 
+WHERE transaction_date LIKE '1/10/09%'
+OR transaction_date LIKE '1/11/09%';
