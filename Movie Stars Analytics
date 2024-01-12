@@ -1,4 +1,4 @@
-/* Create table about movie stars and what they do here */
+# For this project, I have created a table consisting of information on various famous people. 
 
 CREATE TABLE movie_stars (id INTEGER PRIMARY KEY, name TEXT, age INTEGER, gender TEXT, relationship_status TEXT, total_movies INTEGER, movie_genre INTEGER);
 INSERT INTO movie_stars (name, age, gender, relationship_status, total_movies, movie_genre) VALUES ("Ashton Kutcher", 45, "male", "married", 29, 1);
@@ -18,13 +18,15 @@ INSERT INTO movie_genre VALUES (2, "drama");
 INSERT INTO movie_genre VALUES (3, "action");
 INSERT INTO movie_genre VALUES (4, "horror");
 
+# I have created a second table consisting of data about each person's relationship status.
+
 CREATE TABLE couples (id INTEGER PRIMARY KEY, person1 INTEGER, person2 INTEGER);
 INSERT INTO couples (person1, person2) VALUES (1, 2);
 INSERT INTO couples (person1, person2) VALUES (3, 4);
 INSERT INTO couples (person1, person2) VALUES (9, 10);
 
 
-/* What movie genre does each actor belong to? */
+/*What movie genre does each actor belong to?*/
 SELECT movie_stars.name, movie_genre.genre 
 FROM movie_stars
 JOIN movie_genre
